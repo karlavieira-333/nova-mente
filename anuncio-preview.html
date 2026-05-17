@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prévia dos Anúncios — Nova Mente</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #FDF6EE;
+      --bg-alt:  #F5E6D3;
+      --primary: #C1440E;
+      --dark:    #8B2500;
+      --text:    #2C1810;
+      --soft:    #7A5544;
+      --white:   #FFFFFF;
+      --borda:   #E8D5C0;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── TOPO ── */
+    .topo {
+      background: var(--dark);
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .topo-nome {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 17px;
+      color: var(--white);
+    }
+    .topo-tag {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* ── LAYOUT PRINCIPAL ── */
+    .pagina {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 56px 32px 80px;
+    }
+
+    .intro {
+      margin-bottom: 52px;
+    }
+    .intro h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .intro p {
+      font-size: 15px;
+      color: var(--soft);
+    }
+
+    /* ── GRADE DE ARTES ── */
+    .artes-grid {
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .arte-bloco {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .arte-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .arte-label h2 {
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .arte-label .formato {
+      font-size: 12px;
+      color: var(--soft);
+      background: var(--bg-alt);
+      border: 1px solid var(--borda);
+      border-radius: 100px;
+      padding: 3px 12px;
+    }
+
+    /* ── MOLDURA DEVICE ── */
+    .device {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow:
+        0 2px 4px rgba(44,24,16,0.08),
+        0 8px 24px rgba(44,24,16,0.14),
+        0 0 0 1px rgba(44,24,16,0.06);
+    }
+
+    /* ── ARTE: FEED (1:1) ── */
+    .arte-feed {
+      width: 420px;
+      height: 420px;
+      position: relative;
+      background: url('imagens/foto-karla-2.png') center / cover no-repeat;
+      display: flex;
+      flex-direction: column;
+    }
+    .arte-feed .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(139,37,0,0.55) 0%,
+        rgba(44,24,16,0.78) 100%
+      );
+    }
+    .arte-feed .conteudo {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 36px 40px;
+      gap: 16px;
+    }
+    .arte-feed .marca {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .arte-feed .linha1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.35;
+    }
+    .arte-feed .linha2 {
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.65;
+      max-width: 300px;
+    }
+    .arte-feed .btn-arte {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      padding: 12px 28px;
+      border-radius: 4px;
+      margin-top: 8px;
+    }
+
+    /* ── ARTE: STORIES (9:16) ── */
+    .arte-stories {
+      width: 270px;
+      height: 480px;
+      position: relative;
+      background: url('imagens/foto-karla-2.png') center top / cover no-repeat;
+      display: flex;
+      flex-direction: column;
+    }
+    .arte-stories .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(44,24,16,0.15) 0%,
+        rgba(44,24,16,0.20) 45%,
+        rgba(44,24,16,0.82) 72%,
+        rgba(44,24,16,0.92) 100%
+      );
+    }
+    .arte-stories .topo-story {
+      position: relative;
+      z-index: 1;
+      padding: 16px 18px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .arte-stories .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: url('imagens/foto-karla-2.png') center / cover;
+      border: 2px solid var(--primary);
+      flex-shrink: 0;
+    }
+    .arte-stories .perfil-nome {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .arte-stories .conteudo {
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
+      padding: 0 22px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .arte-stories .linha1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.35;
+    }
+    .arte-stories .linha2 {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.6;
+    }
+    .arte-stories .btn-arte {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      padding: 10px 22px;
+      border-radius: 4px;
+      align-self: flex-start;
+      margin-top: 4px;
+    }
+    .arte-stories .swipe {
+      font-size: 10px;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* ── COPY REFERÊNCIA ── */
+    .copy-ref {
+      background: var(--bg-alt);
+      border: 1px solid var(--borda);
+      border-left: 3px solid var(--primary);
+      border-radius: 6px;
+      padding: 16px 18px;
+      max-width: 420px;
+    }
+    .copy-ref h3 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 10px;
+    }
+    .copy-ref p {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 6px;
+    }
+    .copy-ref p:last-child { margin-bottom: 0; }
+    .copy-ref .campo {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .copy-ref .campo-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      min-width: 80px;
+      flex-shrink: 0;
+      padding-top: 1px;
+    }
+    .copy-ref .campo-valor {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    /* ── PALETA ── */
+    .paleta-secao {
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid var(--borda);
+    }
+    .paleta-secao h2 {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 16px;
+    }
+    .paleta-grid {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .cor {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      border: 1px solid var(--borda);
+      border-radius: 6px;
+      padding: 10px 14px;
+    }
+    .cor-swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .cor-info p { font-size: 12px; color: var(--text); font-weight: 700; }
+    .cor-info span { font-size: 11px; color: var(--soft); }
+  </style>
+</head>
+<body>
+
+  <div class="topo">
+    <span class="topo-nome">Nova Mente</span>
+    <span class="topo-tag">Prévia de Anúncios</span>
+  </div>
+
+  <div class="pagina">
+
+    <div class="intro">
+      <h1>Anúncio Nova Mente — Remarketing</h1>
+      <p>Prévia das artes para Facebook e Instagram. Foto base: foto-karla-2.png.</p>
+    </div>
+
+    <div class="artes-grid">
+
+      <!-- ARTE 1: FEED -->
+      <div class="arte-bloco">
+        <div class="arte-label">
+          <h2>Arte 1 — Feed</h2>
+          <span class="formato">1080 x 1080</span>
+        </div>
+
+        <div class="device">
+          <div class="arte-feed">
+            <div class="overlay"></div>
+            <div class="conteudo">
+              <p class="marca">Nova Mente — Karla Vieira</p>
+              <p class="linha1">Você reage de um jeito que detesta em você.</p>
+              <p class="linha2">O Nova Mente é o grupo onde você trabalha isso toda semana.</p>
+              <span class="btn-arte">Conhecer o Nova Mente</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="copy-ref">
+          <h3>Copy de referência</h3>
+          <div class="campo">
+            <span class="campo-label">Headline</span>
+            <span class="campo-valor">Você sabe o que mudar. Vem mudar.</span>
+          </div>
+          <div class="campo">
+            <span class="campo-label">Descrição</span>
+            <span class="campo-valor">Grupo terapêutico semanal</span>
+          </div>
+          <div class="campo">
+            <span class="campo-label">CTA</span>
+            <span class="campo-valor">Saiba mais</span>
+          </div>
+          <div class="campo">
+            <span class="campo-label">URL</span>
+            <span class="campo-valor">karlavieira-333.github.io/nova-mente</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARTE 2: STORIES -->
+      <div class="arte-bloco">
+        <div class="arte-label">
+          <h2>Arte 2 — Stories</h2>
+          <span class="formato">1080 x 1920</span>
+        </div>
+
+        <div class="device">
+          <div class="arte-stories">
+            <div class="overlay"></div>
+            <div class="topo-story">
+              <div class="avatar"></div>
+              <span class="perfil-nome">karlavieiraterapeuta</span>
+            </div>
+            <div class="conteudo">
+              <p class="linha1">Você sabe o que precisa mudar.</p>
+              <p class="linha2">Falta fazer junto com quem já esteve lá.</p>
+              <span class="btn-arte">Ver o grupo</span>
+              <p class="swipe">deslize para cima</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="copy-ref" style="max-width: 270px;">
+          <h3>Copy de referência</h3>
+          <div class="campo">
+            <span class="campo-label">Link</span>
+            <span class="campo-valor">Ver o grupo</span>
+          </div>
+          <div class="campo">
+            <span class="campo-label">Legenda</span>
+            <span class="campo-valor">Nova Mente, grupo terapêutico semanal. Arrasta pra cima e conhece.</span>
+          </div>
+          <div class="campo">
+            <span class="campo-label">URL</span>
+            <span class="campo-valor">karlavieira-333.github.io/nova-mente</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PALETA -->
+    <div class="paleta-secao">
+      <h2>Paleta de cores</h2>
+      <div class="paleta-grid">
+        <div class="cor">
+          <div class="cor-swatch" style="background:#C1440E;"></div>
+          <div class="cor-info"><p>Terracota</p><span>#C1440E</span></div>
+        </div>
+        <div class="cor">
+          <div class="cor-swatch" style="background:#8B2500;"></div>
+          <div class="cor-info"><p>Terracota escuro</p><span>#8B2500</span></div>
+        </div>
+        <div class="cor">
+          <div class="cor-swatch" style="background:#FDF6EE; border: 1px solid #E8D5C0;"></div>
+          <div class="cor-info"><p>Bege claro</p><span>#FDF6EE</span></div>
+        </div>
+        <div class="cor">
+          <div class="cor-swatch" style="background:#F5E6D3;"></div>
+          <div class="cor-info"><p>Bege médio</p><span>#F5E6D3</span></div>
+        </div>
+        <div class="cor">
+          <div class="cor-swatch" style="background:#2C1810;"></div>
+          <div class="cor-info"><p>Texto escuro</p><span>#2C1810</span></div>
+        </div>
+        <div class="cor">
+          <div class="cor-swatch" style="background:#FFFFFF; border: 1px solid #E8D5C0;"></div>
+          <div class="cor-info"><p>Branco</p><span>#FFFFFF</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
