@@ -80,25 +80,28 @@
        DOBRA 1 — HERO
     ───────────────────────────────────── */
     .hero {
-      position: relative;
       background: var(--dark);
       color: var(--white);
       min-height: 92vh;
-      display: flex;
-      align-items: center;
-      padding: 80px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       overflow: hidden;
     }
-    .hero-img {
-      position: absolute;
-      inset: 0;
-      background: url('imagens/karla-hero.jpg') center top / cover no-repeat;
-      opacity: 0.30;
-    }
     .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 48px 80px 24px;
+    }
+    .hero-foto {
+      overflow: hidden;
+    }
+    .hero-foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
     .hero-tag {
       display: inline-block;
@@ -167,6 +170,21 @@
       line-height: 1.6;
     }
     .dor-lista li .marcador { color: var(--primary); font-weight: 700; font-size: 20px; flex-shrink: 0; line-height: 1.6; }
+    .dor-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .dor-lista { margin: 0; max-width: none; }
+    .dor-foto img {
+      width: 100%;
+      border-radius: 8px;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
 
     /* ─────────────────────────────────────
        DOBRA 3 — AGRAVANTE
@@ -679,9 +697,13 @@
 
     /* ── RESPONSIVO ── */
     @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-content { padding: 64px 24px 40px; }
+      .hero-foto { height: 320px; }
       .sobre-inner { grid-template-columns: 1fr; gap: 32px; }
       .sobre-foto img { aspect-ratio: 4/3; }
-      .hero { min-height: 100svh; }
+      .dor-inner { grid-template-columns: 1fr; }
+      .dor-foto { display: none; }
       .btn-lg { font-size: 16px; padding: 18px 32px; }
     }
   </style>
@@ -696,12 +718,14 @@
 
   <!-- ── DOBRA 1 — HERO ── -->
   <section class="hero">
-    <div class="hero-img"></div>
     <div class="hero-content">
       <span class="hero-tag">Grupo Terapêutico</span>
       <h1>E se você pudesse tratar seus traumas, viver sem ansiedade e encontrar seu propósito de vida?</h1>
       <p>Nova Mente é um grupo terapêutico que une neurociência, psicanálise e fé para cuidar do seu corpo, alma e espírito — porque uma vida leve e com propósito é possível para você, mesmo que você não acredite mais nisso.</p>
       <a href="#planos" class="btn btn-lg">Quero transformar minha mente</a>
+    </div>
+    <div class="hero-foto">
+      <img src="imagens/karla-hero.jpg" alt="Karla Vieira — Terapeuta">
     </div>
   </section>
 
@@ -711,14 +735,19 @@
     <div class="container">
       <h2>Você se reconhece em alguma dessas situações?</h2>
       <p class="lide">Se pelo menos uma dessas frases fez você parar, continue lendo.</p>
-      <ul class="dor-lista">
-        <li><span class="marcador">•</span> Você reage de um jeito que detesta em você, e depois se culpa por isso.</li>
-        <li><span class="marcador">•</span> Sente ansiedade que não passa, mesmo quando tudo parece bem por fora.</li>
-        <li><span class="marcador">•</span> Tem dificuldade de se posicionar, dizer não, ou ocupar espaço sem se sentir culpada.</li>
-        <li><span class="marcador">•</span> Repete padrões antigos nos relacionamentos, no trabalho, na família.</li>
-        <li><span class="marcador">•</span> Sabe o que tem que mudar, leu sobre isso, entende, mas ainda não mudou.</li>
-        <li><span class="marcador">•</span> Sente que vai bem por fora e está se arrastando por dentro.</li>
-      </ul>
+      <div class="dor-inner">
+        <ul class="dor-lista">
+          <li><span class="marcador">•</span> Você reage de um jeito que detesta em você, e depois se culpa por isso.</li>
+          <li><span class="marcador">•</span> Sente ansiedade que não passa, mesmo quando tudo parece bem por fora.</li>
+          <li><span class="marcador">•</span> Tem dificuldade de se posicionar, dizer não, ou ocupar espaço sem se sentir culpada.</li>
+          <li><span class="marcador">•</span> Repete padrões antigos nos relacionamentos, no trabalho, na família.</li>
+          <li><span class="marcador">•</span> Sabe o que tem que mudar, leu sobre isso, entende, mas ainda não mudou.</li>
+          <li><span class="marcador">•</span> Sente que vai bem por fora e está se arrastando por dentro.</li>
+        </ul>
+        <div class="dor-foto">
+          <img src="imagens/mulher-natureza.jpg" alt="Mulher em paz, olhos fechados">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -841,7 +870,7 @@
     <div class="container">
       <div class="sobre-inner">
         <div class="sobre-foto">
-          <img src="imagens/foto-karla-1.png" alt="Karla Vieira — Terapeuta">
+          <img src="imagens/karla-principal.jpg" alt="Karla Vieira — Terapeuta">
         </div>
         <div class="sobre-texto">
           <h2>Quem está do outro lado</h2>
