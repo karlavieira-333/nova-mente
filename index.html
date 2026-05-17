@@ -166,7 +166,7 @@
       font-size: 17px;
       line-height: 1.6;
     }
-    .dor-lista li .icone { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .dor-lista li .marcador { color: var(--primary); font-weight: 700; font-size: 20px; flex-shrink: 0; line-height: 1.6; }
 
     /* ─────────────────────────────────────
        DOBRA 3 — AGRAVANTE
@@ -622,6 +622,61 @@
       margin-bottom: 4px;
     }
 
+    /* ─────────────────────────────────────
+       FAQ
+    ───────────────────────────────────── */
+    .faq {
+      background: var(--bg-alt);
+    }
+    .faq h2 {
+      font-size: clamp(22px, 3.5vw, 36px);
+      color: var(--dark);
+      margin-bottom: 36px;
+      text-align: center;
+    }
+    .faq-lista {
+      max-width: 700px;
+      margin: 0 auto;
+      display: grid;
+      gap: 12px;
+    }
+    .faq-lista details {
+      background: var(--white);
+      border-radius: 6px;
+      border: 1.5px solid var(--borda);
+      overflow: hidden;
+    }
+    .faq-lista details[open] {
+      border-color: var(--primary);
+    }
+    .faq-lista summary {
+      padding: 18px 20px;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--dark);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .faq-lista summary::-webkit-details-marker { display: none; }
+    .faq-lista summary::after {
+      content: '+';
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    .faq-lista details[open] summary::after { content: '−'; }
+    .faq-resposta {
+      padding: 0 20px 18px;
+      font-size: 16px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
     /* ── RESPONSIVO ── */
     @media (max-width: 700px) {
       .sobre-inner { grid-template-columns: 1fr; gap: 32px; }
@@ -643,7 +698,7 @@
   <section class="hero">
     <div class="hero-img"></div>
     <div class="hero-content">
-      <span class="hero-tag">Grupo Terapêutico Mensal</span>
+      <span class="hero-tag">Grupo Terapêutico</span>
       <h1>E se você pudesse tratar seus traumas, viver sem ansiedade e encontrar seu propósito de vida?</h1>
       <p>Nova Mente é um grupo terapêutico que une neurociência, psicanálise e fé para cuidar do seu corpo, alma e espírito — porque uma vida leve e com propósito é possível para você, mesmo que você não acredite mais nisso.</p>
       <a href="#planos" class="btn btn-lg">Quero transformar minha mente</a>
@@ -657,12 +712,12 @@
       <h2>Você se reconhece em alguma dessas situações?</h2>
       <p class="lide">Se pelo menos uma dessas frases fez você parar, continue lendo.</p>
       <ul class="dor-lista">
-        <li>Você reage de um jeito que detesta em você, e depois se culpa por isso.</li>
-        <li>Sente ansiedade que não passa, mesmo quando tudo parece bem por fora.</li>
-        <li>Tem dificuldade de se posicionar, dizer não, ou ocupar espaço sem se sentir culpada.</li>
-        <li>Repete padrões antigos nos relacionamentos, no trabalho, na família.</li>
-        <li>Sabe o que tem que mudar, leu sobre isso, entende, mas ainda não mudou.</li>
-        <li>Sente que vai bem por fora e está se arrastando por dentro.</li>
+        <li><span class="marcador">•</span> Você reage de um jeito que detesta em você, e depois se culpa por isso.</li>
+        <li><span class="marcador">•</span> Sente ansiedade que não passa, mesmo quando tudo parece bem por fora.</li>
+        <li><span class="marcador">•</span> Tem dificuldade de se posicionar, dizer não, ou ocupar espaço sem se sentir culpada.</li>
+        <li><span class="marcador">•</span> Repete padrões antigos nos relacionamentos, no trabalho, na família.</li>
+        <li><span class="marcador">•</span> Sabe o que tem que mudar, leu sobre isso, entende, mas ainda não mudou.</li>
+        <li><span class="marcador">•</span> Sente que vai bem por fora e está se arrastando por dentro.</li>
       </ul>
     </div>
   </section>
@@ -684,7 +739,7 @@
   <section class="solucao">
     <div class="container">
       <h2>O que é o Nova Mente</h2>
-      <p class="subtitulo">Um grupo terapêutico mensal onde você trabalha as consequências das suas feridas no dia a dia, com acompanhamento contínuo.</p>
+      <p class="subtitulo">Um grupo terapêutico onde toda semana você trabalha as consequências das suas feridas e traumas, com acompanhamento contínuo.</p>
       <div class="solucao-cards">
         <div class="solucao-card">
           <h3>4 encontros ao vivo por mês</h3>
@@ -711,10 +766,10 @@
   <section class="feridas">
     <div class="container">
       <h2>O que você vai trabalhar aqui</h2>
-      <p class="subtitulo">As feridas emocionais deixam marcas que continuam operando no seu dia a dia. Isso é o que o Nova Mente trabalha.</p>
+      <p class="subtitulo">As feridas e traumas emocionais deixam marcas que continuam operando no seu dia a dia. Isso é o que o Nova Mente trabalha.</p>
       <div class="feridas-grid">
         <div class="ferida-card">
-          <h3>Consequências da Rejeição</h3>
+          <h3>Se você passou por Rejeição</h3>
           <ul>
             <li>Dificuldade de se posicionar e dizer não</li>
             <li>Necessidade constante de aprovação</li>
@@ -722,7 +777,7 @@
           </ul>
         </div>
         <div class="ferida-card">
-          <h3>Consequências do Abandono</h3>
+          <h3>Se você passou por Abandono</h3>
           <ul>
             <li>Ansiedade em relacionamentos</li>
             <li>Dependência emocional</li>
@@ -730,7 +785,7 @@
           </ul>
         </div>
         <div class="ferida-card">
-          <h3>Consequências da Humilhação</h3>
+          <h3>Se você passou por Humilhação</h3>
           <ul>
             <li>Baixa autoestima persistente</li>
             <li>Procrastinação e medo de errar</li>
@@ -738,7 +793,7 @@
           </ul>
         </div>
         <div class="ferida-card">
-          <h3>Consequências da Injustiça</h3>
+          <h3>Se você passou por Injustiça</h3>
           <ul>
             <li>Autocobrança e perfeccionismo</li>
             <li>Esgotamento por querer controlar tudo</li>
@@ -746,7 +801,7 @@
           </ul>
         </div>
         <div class="ferida-card">
-          <h3>Consequências da Traição</h3>
+          <h3>Se você passou por Traição</h3>
           <ul>
             <li>Desconfiança e dificuldade de se entregar</li>
             <li>Controle excessivo em relações</li>
@@ -790,10 +845,10 @@
         </div>
         <div class="sobre-texto">
           <h2>Quem está do outro lado</h2>
-          <p>Cresci num lar com pais traumatizados que acabaram transferindo seus traumas para mim. Desde pequena era comparada, me sentia rejeitada e abandonada emocionalmente. Eles fizeram tudo que podiam, mas não foi suficiente para me livrar dos traumas.</p>
-          <p>Adolescente revoltada, adulta com vários problemas de relacionamento. Casei aos 20 anos, traí, fui traída, e depois de 5 anos casada engravidei do Cauã. Ele nasceu, e aos 2 meses de vida faleceu de uma doença cardíaca rara.</p>
-          <p>Foi meu fundo do poço. Comecei a beber, me divorcie, e continuei o caminho destruindo o que sobrou. Anos depois, sofri um AVC, e aquilo foi o ponto de virada que eu precisava para parar e encarar tudo que estava carregando.</p>
-          <p>Hoje sou terapeuta em Mongaguá. Não porque aprendi num livro, mas porque vivi o processo de dentro. Sei o peso do antes, e sei o quanto o depois é possível.</p>
+          <p>Cresci num lar com alcoolismo, brigas, depressão e isso me marcou profundamente. Desde pequena era comparada, me sentia rejeitada e abandonada emocionalmente. Me tornei a adolescente revoltada, adulta traumatizada com vários problemas emocionais.</p>
+          <p>Me casei, engravidei e aos 2 meses de vida meu filho faleceu de uma doença cardíaca rara. Foi meu fundo do poço. Entrei num looping de autodestruição, e continuei o caminho destruindo o que sobrou.</p>
+          <p>Anos depois, sofri um AVC, e aquilo foi o ponto de virada que eu precisava para parar e encarar tudo que estava carregando.</p>
+          <p>Hoje sou psicanalista, com pós em neurociência, traumas e saúde mental, e desde 2020 ajudo mulheres a mudarem sua mente e suas vidas. Não porque aprendi num livro, apenas, mas porque vivi o processo de dentro. Sei o peso do antes, e sei o quanto o depois é possível.</p>
           <p>O Nova Mente é o lugar onde eu sento do seu lado e faço esse caminho junto com você.</p>
         </div>
       </div>
@@ -869,8 +924,8 @@
           <div class="plano-badge">Mais completo</div>
           <div class="plano-nome">Plano Anual</div>
           <div class="plano-preco"><span>R$</span> 697</div>
-          <div class="plano-periodo">por ano — equivale a R$58/mês</div>
-          <div class="plano-parcel">ou 12x de R$72,09</div>
+          <div class="plano-periodo">por ano — ou 12x de R$72,09</div>
+          <div class="plano-parcel">&nbsp;</div>
           <ul class="plano-itens">
             <li><span class="ok">✓</span> 4 encontros semanais ao vivo</li>
             <li><span class="ok">✓</span> Jejum coletivo mensal</li>
@@ -900,6 +955,36 @@
   </section>
 
 
+  <!-- ── FAQ ── -->
+  <section class="faq">
+    <div class="container">
+      <h2>Perguntas frequentes</h2>
+      <div class="faq-lista">
+        <details>
+          <summary>Preciso ter feito terapia antes?</summary>
+          <p class="faq-resposta">Não. O Nova Mente é para qualquer mulher que quer trabalhar sua saúde mental, independente de experiência anterior.</p>
+        </details>
+        <details>
+          <summary>Como funcionam os encontros?</summary>
+          <p class="faq-resposta">São encontros semanais ao vivo. No plano mensal você participa ao vivo. No plano anual você tem acesso às gravações na plataforma.</p>
+        </details>
+        <details>
+          <summary>E se eu não puder ir em algum encontro?</summary>
+          <p class="faq-resposta">No plano anual você tem acesso à gravação. No plano mensal, o encontro não é reposto.</p>
+        </details>
+        <details>
+          <summary>Posso cancelar quando quiser?</summary>
+          <p class="faq-resposta">Sim. O plano mensal pode ser cancelado a qualquer momento. O plano anual dá acesso por 12 meses completos.</p>
+        </details>
+        <details>
+          <summary>Como entro no grupo após a compra?</summary>
+          <p class="faq-resposta">Após o pagamento você é direcionada para uma página com instruções e o link do grupo.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+
   <!-- ── DOBRA 12 — CTA FINAL ── -->
   <section class="cta-final">
     <div class="container-sm">
@@ -914,8 +999,7 @@
 
   <!-- RODAPÉ -->
   <footer>
-    <strong>Karla Vieira — Terapeuta</strong>
-    <p style="margin-top: 8px;">Mongaguá, SP</p>
+    <strong>Karla Vieira — Psicanalista</strong>
     <p style="margin-top: 12px; font-size: 12px;">Nova Mente &copy; 2026. Todos os direitos reservados.</p>
   </footer>
 
