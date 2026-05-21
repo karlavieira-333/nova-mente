@@ -31,7 +31,7 @@
     /* ── BOTÕES ── */
     .btn-primary {
       display: inline-block;
-      background: var(--vinho);
+      background: var(--vinho-escuro);
       color: var(--branco);
       font-family: 'Lato', sans-serif;
       font-weight: 700;
@@ -40,9 +40,24 @@
       padding: 18px 40px;
       border-radius: 4px;
       text-decoration: none;
-      transition: background 0.2s;
+      transition: background 0.2s, color 0.2s;
     }
-    .btn-primary:hover { background: var(--vinho-escuro); }
+    .btn-primary:hover { background: var(--vinho); }
+
+    #hero .btn-primary,
+    #tipos .btn-primary,
+    #depoimentos .btn-primary,
+    #cta-final .btn-primary {
+      background: var(--bege);
+      color: var(--vinho-escuro);
+    }
+    #hero .btn-primary:hover,
+    #tipos .btn-primary:hover,
+    #depoimentos .btn-primary:hover,
+    #cta-final .btn-primary:hover {
+      background: var(--branco);
+      color: var(--vinho-escuro);
+    }
 
     .btn-whatsapp {
       display: inline-flex;
@@ -61,6 +76,32 @@
     .btn-whatsapp:hover { background: #1ebe5d; }
 
     .btn-wrap { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 40px; }
+
+    /* ── FOTOS ── */
+    .foto-secao {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 32px 0;
+      display: block;
+    }
+    #hero .foto-secao {
+      max-width: 600px;
+      max-height: 480px;
+      margin: 0 auto 40px;
+      border-radius: 12px;
+      opacity: 0.92;
+    }
+    #karla .foto-karla {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      float: right;
+      margin: 0 0 20px 28px;
+      border: 4px solid var(--vinho-claro);
+    }
 
     /* ── 1. HERO ── */
     #hero {
@@ -464,6 +505,7 @@
       .btn-primary, .btn-whatsapp { width: 100%; text-align: center; justify-content: center; }
       .pilares { flex-direction: column; align-items: center; }
       .pilar { max-width: 100%; }
+      #karla .foto-karla { float: none; display: block; margin: 0 auto 24px; }
     }
   </style>
 </head>
@@ -485,6 +527,7 @@
       Nesse workshop você vai entender de onde vem essa voz,
       e aprender a silenciá-la de uma vez.
     </p>
+    <img src="imagens/w1-mae-filha-dor.png" alt="" class="foto-secao" />
     <div class="btn-wrap">
       <a href="#" class="btn-primary">QUERO ME LIBERTAR DESSA VOZ</a>
     </div>
@@ -497,6 +540,7 @@
 <section id="identificacao">
   <div class="container">
     <h2>Você se reconhece nisso?</h2>
+    <img src="imagens/w14-mulher-janela.png" alt="" class="foto-secao" />
     <ul class="check-list">
       <li>Ansiedade que não passa</li>
       <li>Sensação de nunca ser suficiente</li>
@@ -518,8 +562,9 @@
     <h2>De onde vem tudo isso</h2>
     <p>
       A mãe é o primeiro espelho emocional de uma criança.
-      É nesse espelho que ela aprende o que é, se é amada, se é suficiente.
+      É através dela que a criança aprende: sou amada? Sou segura? Tenho valor?
     </p>
+    <img src="imagens/w5-crianca-sozinha.png" alt="" class="foto-secao" />
     <p>
       Quando esse espelho reflete rejeição, crítica ou ausência,
       a criança não pensa: "minha mãe está errada."
@@ -551,6 +596,7 @@
       Toda ferida materna tem uma origem específica.
       Reconhecer a sua é o primeiro passo para sair do padrão.
     </p>
+    <img src="imagens/w3-mae-gritando.png" alt="" class="foto-secao" />
     <div class="tipos-grid">
       <div class="tipo-card">
         <h3>A mãe rejeitadora</h3>
@@ -602,8 +648,9 @@
         <p>Como Deus entra no processo sem religiosidade</p>
       </div>
     </div>
+    <img src="imagens/w18-menina-luz.png" alt="" class="foto-secao" />
     <p class="detalhe">
-      Inclui exercício prático de PNL no final: "Da Rejeitada à Amada."
+      Inclui exercício prático de liberação de cargas traumáticas no final: 'Da Rejeitada à Amada.' E você não sairá a mesma depois desse exercício.
     </p>
     <div class="btn-wrap">
       <a href="#" class="btn-primary">QUERO ME LIBERTAR DESSA VOZ</a>
@@ -705,6 +752,7 @@
 <section id="karla">
   <div class="container">
     <h2>Quem sou eu para te falar disso</h2>
+    <img src="imagens/foto-karla-1.png" alt="Karla Vieira" class="foto-karla" />
     <p>
       Sou Karla Vieira, terapeuta. E eu não aprendi sobre ferida materna nos livros primeiro.
       Aprendi na pele.
@@ -731,7 +779,7 @@
       Que repetem padrões que elas mesmas reconhecem, mas não conseguem parar.
     </p>
     <p>
-      Eu sei exatamente como você se sente, mulher de Deus.
+      Eu sei exatamente como você se sente, mulher.
       Porque eu estive lá.
     </p>
     <p class="assinatura">Karla Vieira</p>
@@ -747,27 +795,40 @@
     <div class="depo-grid">
       <div class="depo-card">
         <p class="texto">
-          "Assisti as 3 horas de uma vez. Chorei, me reconheci em cada tipo de mãe que ela descreveu.
-          O exercício do final me deixou sem palavras. Coisa que terapia em anos não conseguiu nomear,
-          o workshop me deu em um dia."
+          "Como me fez muito bem esse workshop feridas maternas. Estou me sentindo liberta, livre, sem culpa.
+          Antes de começar estava com dor de cabeça, nas costas, nos ombros.
+          Depois da técnica me senti outra pessoa."
         </p>
-        <p class="nome">Depoimento em breve</p>
+        <p class="nome">Anônima</p>
       </div>
       <div class="depo-card">
         <p class="texto">
-          "Sempre achei que minha mãe não tinha me machucado tanto assim.
-          Depois desse workshop entendi que eu minimizava tudo para não sentir.
-          Foi o começo de um processo que mudou minha relação comigo mesma."
+          "Era pra mim esse workshop feridas maternas. Fui à missa das 07h sem forças,
+          não queria nem sair da cama. Depois da técnica estou ótima."
         </p>
-        <p class="nome">Depoimento em breve</p>
+        <p class="nome">Anônima</p>
       </div>
       <div class="depo-card">
         <p class="texto">
-          "Eu precisava entender de onde vinha essa necessidade constante de aprovação.
-          A Karla explica tudo com uma clareza que não assusta, mas também não suaviza.
-          Me senti vista do começo ao fim."
+          "Para vocês terem noção de quanto a aula foi um divisor de águas pra mim.
+          Quando meu marido chegou do serviço, percebeu eu mais leve. E ele não sabia de nada."
         </p>
-        <p class="nome">Depoimento em breve</p>
+        <p class="nome">Thai</p>
+      </div>
+      <div class="depo-card">
+        <p class="texto">
+          "Que encontro maravilhoso, emocionante. GRATIDÃO Karla pelo acolhimento, pela entrega.
+          Renovou minhas esperanças."
+        </p>
+        <p class="nome">Anônima</p>
+      </div>
+      <div class="depo-card">
+        <p class="texto">
+          "Essa aula foi tão importante pra mim. Tão necessária.
+          Creio que Deus me colocou aqui no momento em que eu mais precisava.
+          Meu coração transborda gratidão."
+        </p>
+        <p class="nome">Thai</p>
       </div>
     </div>
   </div>
@@ -827,8 +888,9 @@
     <p class="texto">
       Precisa mudar a relação que você tem com a imagem dela dentro de você.
       É isso que esse workshop faz.
-      Mulher de Deus, quando você estiver pronta, a porta está aberta.
+      Quando você estiver pronta, a porta está aberta.
     </p>
+    <img src="imagens/w17-mulher-liberdade.png" alt="" class="foto-secao" />
 
     <div class="btn-wrap">
       <a href="#" class="btn-primary">QUERO ME LIBERTAR — R$47</a>
