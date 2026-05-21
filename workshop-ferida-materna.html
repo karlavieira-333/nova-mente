@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workshop Ferida Materna — Karla Vieira</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --roxo:   #7B6B8F;
+      --roxo-escuro: #5a4f6b;
+      --bege:   #FDF6EE;
+      --texto:  #2C1810;
+      --branco: #FFFFFF;
+      --roxo-claro: #EDE8F3;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--texto);
+      background: var(--branco);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.25; }
+
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── BOTÕES ── */
+    .btn-primary {
+      display: inline-block;
+      background: var(--roxo);
+      color: var(--branco);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      padding: 18px 40px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--roxo-escuro); }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: var(--branco);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-whatsapp:hover { background: #1ebe5d; }
+
+    .btn-wrap { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 40px; }
+
+    /* ── 1. HERO ── */
+    #hero {
+      background: var(--roxo);
+      color: var(--branco);
+      padding: 100px 24px 80px;
+      text-align: center;
+    }
+    #hero .eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 24px;
+    }
+    #hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 32px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #hero .sub1 {
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto 20px;
+      opacity: 0.93;
+    }
+    #hero .sub2 {
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto 48px;
+      font-style: italic;
+      opacity: 0.88;
+    }
+
+    /* ── 2. IDENTIFICAÇÃO ── */
+    #identificacao {
+      background: var(--bege);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    #identificacao h2 {
+      font-size: 1.8rem;
+      margin-bottom: 40px;
+      color: var(--roxo);
+    }
+    .check-list {
+      list-style: none;
+      display: inline-block;
+      text-align: left;
+      max-width: 520px;
+    }
+    .check-list li {
+      padding: 10px 0 10px 36px;
+      position: relative;
+      font-size: 1.05rem;
+      border-bottom: 1px solid #e8ddd1;
+    }
+    .check-list li:last-child { border-bottom: none; }
+    .check-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--roxo);
+      border-radius: 50%;
+      background: var(--roxo-claro);
+    }
+    #identificacao .nota {
+      margin-top: 40px;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--roxo-escuro);
+    }
+
+    /* ── 3. A RAIZ ── */
+    #raiz {
+      background: var(--branco);
+      padding: 80px 24px;
+    }
+    #raiz h2 {
+      font-size: 1.8rem;
+      color: var(--roxo);
+      margin-bottom: 28px;
+    }
+    #raiz p { margin-bottom: 20px; font-size: 1.05rem; }
+    #raiz .destaque {
+      background: var(--roxo-claro);
+      border-left: 4px solid var(--roxo);
+      padding: 20px 24px;
+      border-radius: 0 4px 4px 0;
+      font-style: italic;
+      font-size: 1.05rem;
+      margin: 32px 0;
+    }
+
+    /* ── 4. OS 5 TIPOS ── */
+    #tipos {
+      background: var(--roxo);
+      color: var(--branco);
+      padding: 80px 24px;
+    }
+    #tipos h2 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    #tipos .intro {
+      text-align: center;
+      opacity: 0.88;
+      margin-bottom: 48px;
+      font-size: 1.05rem;
+    }
+    .tipos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .tipo-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .tipo-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    .tipo-card .marca {
+      font-size: 0.9rem;
+      opacity: 0.82;
+      font-style: italic;
+    }
+
+    /* ── 5. O QUE É O WORKSHOP ── */
+    #oque-e {
+      background: var(--bege);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    #oque-e h2 {
+      font-size: 1.8rem;
+      color: var(--roxo);
+      margin-bottom: 20px;
+    }
+    #oque-e .subtitulo {
+      font-size: 1.1rem;
+      max-width: 560px;
+      margin: 0 auto 48px;
+    }
+    .pilares {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .pilar {
+      background: var(--branco);
+      border: 2px solid var(--roxo-claro);
+      border-radius: 8px;
+      padding: 24px 28px;
+      min-width: 180px;
+      flex: 1;
+      max-width: 220px;
+    }
+    .pilar .icon { font-size: 1.5rem; margin-bottom: 10px; }
+    .pilar h3 { font-size: 1rem; color: var(--roxo); margin-bottom: 6px; }
+    .pilar p { font-size: 0.88rem; opacity: 0.8; }
+
+    #oque-e .detalhe {
+      font-size: 1rem;
+      opacity: 0.75;
+      margin-top: 32px;
+    }
+
+    /* ── 6. O QUE VOCÊ VAI APRENDER ── */
+    #aprende {
+      background: var(--branco);
+      padding: 80px 24px;
+    }
+    #aprende h2 {
+      font-size: 1.8rem;
+      color: var(--roxo);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .aprende-list {
+      list-style: none;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .aprende-list li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-bottom: 1px solid #f0e8dc;
+      font-size: 1.05rem;
+    }
+    .aprende-list li:last-child { border-bottom: none; }
+    .aprende-list li .check {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      background: var(--roxo);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .aprende-list li .check svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: var(--branco);
+      stroke-width: 2.5;
+    }
+
+    /* ── 7. PARA QUEM É ── */
+    #para-quem {
+      background: var(--roxo-claro);
+      padding: 80px 24px;
+    }
+    #para-quem h2 {
+      font-size: 1.8rem;
+      color: var(--roxo);
+      margin-bottom: 24px;
+    }
+    #para-quem p { font-size: 1.05rem; margin-bottom: 16px; }
+    #para-quem .exemplos {
+      font-style: italic;
+      color: var(--roxo-escuro);
+      margin-top: 8px;
+    }
+
+    /* ── 8. PARA QUEM NÃO É ── */
+    #nao-para-quem {
+      background: var(--bege);
+      padding: 60px 24px;
+    }
+    #nao-para-quem h2 {
+      font-size: 1.5rem;
+      color: var(--texto);
+      margin-bottom: 20px;
+    }
+    #nao-para-quem p { font-size: 1rem; margin-bottom: 12px; opacity: 0.85; }
+
+    /* ── 9. QUEM É KARLA ── */
+    #karla {
+      background: var(--branco);
+      padding: 80px 24px;
+    }
+    #karla h2 {
+      font-size: 1.8rem;
+      color: var(--roxo);
+      margin-bottom: 32px;
+    }
+    #karla p { font-size: 1.05rem; margin-bottom: 20px; }
+    #karla .assinatura {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--roxo);
+      margin-top: 32px;
+    }
+
+    /* ── 10. DEPOIMENTOS ── */
+    #depoimentos {
+      background: var(--roxo);
+      color: var(--branco);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    #depoimentos h2 {
+      font-size: 1.8rem;
+      margin-bottom: 48px;
+    }
+    .depo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      text-align: left;
+    }
+    .depo-card {
+      background: rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 28px;
+    }
+    .depo-card .texto {
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .depo-card .nome {
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    /* ── 11. FAQ ── */
+    #faq {
+      background: var(--bege);
+      padding: 80px 24px;
+    }
+    #faq h2 {
+      font-size: 1.8rem;
+      color: var(--roxo);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .faq-list { max-width: 640px; margin: 0 auto; }
+    details {
+      border-bottom: 1px solid #ddd3c6;
+      padding: 20px 0;
+    }
+    summary {
+      font-weight: 700;
+      font-size: 1.02rem;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--roxo);
+      font-weight: 300;
+      flex-shrink: 0;
+    }
+    details[open] summary::after { content: '-'; }
+    details p {
+      padding-top: 14px;
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+
+    /* ── 12. CTA FINAL ── */
+    #cta-final {
+      background: var(--roxo);
+      color: var(--branco);
+      padding: 100px 24px;
+      text-align: center;
+    }
+    #cta-final .versiculo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      max-width: 540px;
+      margin: 0 auto 12px;
+      opacity: 0.9;
+    }
+    #cta-final .versiculo-ref {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.65;
+      margin-bottom: 56px;
+    }
+    #cta-final h2 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      max-width: 600px;
+      margin: 0 auto 28px;
+    }
+    #cta-final .texto {
+      font-size: 1.1rem;
+      max-width: 520px;
+      margin: 0 auto 48px;
+      opacity: 0.9;
+    }
+    #cta-final .preco {
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.65;
+      margin-top: 16px;
+    }
+
+    /* ── RODAPÉ ── */
+    footer {
+      background: var(--texto);
+      color: var(--branco);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.85rem;
+      opacity: 0.85;
+    }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 500px) {
+      .btn-primary, .btn-whatsapp { width: 100%; text-align: center; justify-content: center; }
+      .pilares { flex-direction: column; align-items: center; }
+      .pilar { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     1. HERO
+══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <p class="eyebrow">Workshop Ferida Materna</p>
+    <h1>"Tudo que sua mãe dizia, e o que ela não dizia, virou sua voz interna."</h1>
+    <p class="sub1">
+      É por isso que hoje, mesmo adulta, você ouve lá dentro: "Você não é boa o bastante."
+      "Você precisa agradar." "Você não pode errar."
+      Essa é sua criança ferida tentando, até hoje, conquistar o amor que faltou.
+    </p>
+    <p class="sub2">
+      Nesse workshop você vai entender de onde vem essa voz,
+      e aprender a silenciá-la de uma vez.
+    </p>
+    <div class="btn-wrap">
+      <a href="#" class="btn-primary">QUERO ME LIBERTAR DESSA VOZ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     2. IDENTIFICAÇÃO
+══════════════════════════════════════════ -->
+<section id="identificacao">
+  <div class="container">
+    <h2>Você se reconhece nisso?</h2>
+    <ul class="check-list">
+      <li>Ansiedade que não passa</li>
+      <li>Sensação de nunca ser suficiente</li>
+      <li>Necessidade de agradar todo mundo</li>
+      <li>Medo constante de errar ou decepcionar</li>
+      <li>Dificuldade de se colocar em primeiro lugar</li>
+      <li>Relacionamentos onde você sempre cuida mais do que é cuidada</li>
+      <li>Uma voz interna dura que te julga o tempo todo</li>
+    </ul>
+    <p class="nota">Se você marcou pelo menos três, você está no lugar certo, mulher.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     3. A RAIZ
+══════════════════════════════════════════ -->
+<section id="raiz">
+  <div class="container">
+    <h2>De onde vem tudo isso</h2>
+    <p>
+      A mãe é o primeiro espelho emocional de uma criança.
+      É nesse espelho que ela aprende o que é, se é amada, se é suficiente.
+    </p>
+    <p>
+      Quando esse espelho reflete rejeição, crítica ou ausência,
+      a criança não pensa: "minha mãe está errada."
+      Ela pensa: "tem algo errado em mim."
+    </p>
+    <div class="destaque">
+      "Preciso ser perfeita para ser amada."
+      "Não posso incomodar."
+      "Sou responsável por manter tudo bem."
+    </div>
+    <p>
+      Essas mensagens ficam gravadas. E na vida adulta, continuam operando,
+      gerando ansiedade, autocobrança, dificuldade de se colocar em primeiro lugar.
+    </p>
+    <p>
+      Não porque você é fraca.
+      Porque ninguém te ensinou de onde isso veio.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     4. OS 5 TIPOS DE MÃES
+══════════════════════════════════════════ -->
+<section id="tipos">
+  <div class="container">
+    <h2>Os 5 tipos de mães e as marcas que cada uma deixa</h2>
+    <p class="intro">
+      Toda ferida materna tem uma origem específica.
+      Reconhecer a sua é o primeiro passo para sair do padrão.
+    </p>
+    <div class="tipos-grid">
+      <div class="tipo-card">
+        <h3>A mãe rejeitadora</h3>
+        <p class="marca">Fria, crítica, distante. Deixa a marca do medo de ser rejeitada.</p>
+      </div>
+      <div class="tipo-card">
+        <h3>A mãe superprotetora</h3>
+        <p class="marca">Controlava tudo "por amor". Deixa a marca da insegurança e dependência.</p>
+      </div>
+      <div class="tipo-card">
+        <h3>A mãe ausente</h3>
+        <p class="marca">Trabalhava demais, estava sempre ocupada. Deixa a marca da carência e do medo de incomodar.</p>
+      </div>
+      <div class="tipo-card">
+        <h3>A mãe exigente</h3>
+        <p class="marca">Cobrava perfeição em tudo. Deixa a marca da autocobrança e ansiedade crônica.</p>
+      </div>
+      <div class="tipo-card">
+        <h3>A mãe vítima</h3>
+        <p class="marca">Fazia você cuidar dela desde cedo. Deixa a marca da culpa e do medo de errar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     5. O QUE É O WORKSHOP
+══════════════════════════════════════════ -->
+<section id="oque-e">
+  <div class="container">
+    <h2>O que é o Workshop Ferida Materna</h2>
+    <p class="subtitulo">
+      3 horas gravadas. Você acessa na hora que quiser, no seu ritmo.
+    </p>
+    <div class="pilares">
+      <div class="pilar">
+        <div class="icon">&#9679;</div>
+        <h3>Psicanálise</h3>
+        <p>Como a ferida se forma e opera no inconsciente</p>
+      </div>
+      <div class="pilar">
+        <div class="icon">&#9679;</div>
+        <h3>Neurociência</h3>
+        <p>Como o cérebro registra e perpetua o trauma</p>
+      </div>
+      <div class="pilar">
+        <div class="icon">&#9679;</div>
+        <h3>Fé</h3>
+        <p>Como Deus entra no processo sem religiosidade</p>
+      </div>
+    </div>
+    <p class="detalhe">
+      Inclui exercício prático de PNL no final: "Da Rejeitada à Amada."
+    </p>
+    <div class="btn-wrap">
+      <a href="#" class="btn-primary">QUERO ME LIBERTAR DESSA VOZ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     6. O QUE VOCÊ VAI APRENDER
+══════════════════════════════════════════ -->
+<section id="aprende">
+  <div class="container">
+    <h2>O que você vai aprender</h2>
+    <ul class="aprende-list">
+      <li>
+        <span class="check">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        Como a ferida materna molda sua autoestima e autoimagem
+      </li>
+      <li>
+        <span class="check">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        A conexão entre trauma materno e ansiedade crônica
+      </li>
+      <li>
+        <span class="check">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        Os 5 tipos de mães e as marcas específicas que cada uma deixa
+      </li>
+      <li>
+        <span class="check">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        Como o cérebro registra e perpetua esses padrões
+      </li>
+      <li>
+        <span class="check">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        Como a fé entra no processo sem religiosidade
+      </li>
+      <li>
+        <span class="check">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        O exercício de ressignificação "Da Rejeitada à Amada"
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     7. PARA QUEM É
+══════════════════════════════════════════ -->
+<section id="para-quem">
+  <div class="container">
+    <h2>Para quem é esse workshop</h2>
+    <p>
+      Para mulheres que sentem que a relação com a mãe ainda afeta sua vida hoje.
+    </p>
+    <p class="exemplos">
+      Mesmo que a mãe já tenha falecido.<br>
+      Mesmo que o relacionamento seja distante ou inexistente.<br>
+      Mesmo que você ache que já superou.
+    </p>
+    <p>
+      A ferida não precisa que a mãe esteja presente para continuar operando.
+      Ela opera de dentro. É lá que o trabalho acontece.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     8. PARA QUEM NÃO É
+══════════════════════════════════════════ -->
+<section id="nao-para-quem">
+  <div class="container">
+    <h2>Para quem não é</h2>
+    <p>
+      Para quem busca só teoria, sem disposição para se aprofundar emocionalmente.
+    </p>
+    <p>
+      Para quem não quer olhar para sua história com honestidade.
+    </p>
+    <p>
+      O conteúdo é profundo. Ele vai mexer com você.
+      Isso é intencional, e é conduzido com cuidado.
+      Mas se você não estiver disposta a sentir, espere o momento certo.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     9. QUEM É KARLA
+══════════════════════════════════════════ -->
+<section id="karla">
+  <div class="container">
+    <h2>Quem sou eu para te falar disso</h2>
+    <p>
+      Sou Karla Vieira, terapeuta. E eu não aprendi sobre ferida materna nos livros primeiro.
+      Aprendi na pele.
+    </p>
+    <p>
+      Cresci ouvindo comparações. Buscando aprovação que nunca chegava da forma que eu precisava.
+      Carreguei por anos uma voz interna que me dizia que eu nunca era suficiente,
+      e acreditei nela por muito tempo.
+    </p>
+    <p>
+      Sofri perdas que me colocaram no fundo do poço.
+      A perda do meu filho Cauã foi uma delas.
+      E foi nesse fundo que eu entendi: ou eu aprendia a governar minha própria mente,
+      ou ia continuar sendo governada pelo que ficou lá atrás.
+    </p>
+    <p>
+      Fui buscar entender, de verdade, o que acontecia comigo.
+      E quando entendi, não consegui guardar só pra mim.
+    </p>
+    <p>
+      Hoje trabalho com mulheres que estão onde eu estive.
+      Que acordam cansadas antes de sair da cama.
+      Que se cobram demais e se cuidam de menos.
+      Que repetem padrões que elas mesmas reconhecem, mas não conseguem parar.
+    </p>
+    <p>
+      Eu sei exatamente como você se sente, mulher de Deus.
+      Porque eu estive lá.
+    </p>
+    <p class="assinatura">Karla Vieira</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     10. DEPOIMENTOS
+══════════════════════════════════════════ -->
+<section id="depoimentos">
+  <div class="container">
+    <h2>O que dizem quem já passou por aqui</h2>
+    <div class="depo-grid">
+      <div class="depo-card">
+        <p class="texto">
+          "Assisti as 3 horas de uma vez. Chorei, me reconheci em cada tipo de mãe que ela descreveu.
+          O exercício do final me deixou sem palavras. Coisa que terapia em anos não conseguiu nomear,
+          o workshop me deu em um dia."
+        </p>
+        <p class="nome">Depoimento em breve</p>
+      </div>
+      <div class="depo-card">
+        <p class="texto">
+          "Sempre achei que minha mãe não tinha me machucado tanto assim.
+          Depois desse workshop entendi que eu minimizava tudo para não sentir.
+          Foi o começo de um processo que mudou minha relação comigo mesma."
+        </p>
+        <p class="nome">Depoimento em breve</p>
+      </div>
+      <div class="depo-card">
+        <p class="texto">
+          "Eu precisava entender de onde vinha essa necessidade constante de aprovação.
+          A Karla explica tudo com uma clareza que não assusta, mas também não suaviza.
+          Me senti vista do começo ao fim."
+        </p>
+        <p class="nome">Depoimento em breve</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     11. FAQ
+══════════════════════════════════════════ -->
+<section id="faq">
+  <div class="container">
+    <h2>Perguntas frequentes</h2>
+    <div class="faq-list">
+      <details>
+        <summary>O workshop é ao vivo?</summary>
+        <p>Não. É gravado, então você acessa na hora que quiser, no seu ritmo, quantas vezes precisar.</p>
+      </details>
+      <details>
+        <summary>Quanto tempo tenho acesso?</summary>
+        <p>Acesso vitalício. Uma vez que você compra, o conteúdo é seu para sempre.</p>
+      </details>
+      <details>
+        <summary>Preciso ter feito terapia antes?</summary>
+        <p>
+          Não. O workshop foi feito para qualquer mulher que quer entender a raiz das suas dores.
+          Não é necessário ter nenhum conhecimento prévio.
+        </p>
+      </details>
+      <details>
+        <summary>É muito pesado emocionalmente?</summary>
+        <p>
+          O conteúdo é profundo, sim. Mas ele é conduzido com cuidado e acolhimento.
+          Você pode pausar, respirar e voltar quando quiser. O ritmo é seu.
+        </p>
+      </details>
+      <details>
+        <summary>Como acesso após a compra?</summary>
+        <p>
+          Você recebe o acesso por e-mail imediatamente após a confirmação da compra,
+          direto na plataforma Kiwify.
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     12. CTA FINAL
+══════════════════════════════════════════ -->
+<section id="cta-final">
+  <div class="container">
+    <p class="versiculo">
+      "Ainda que minha mãe me abandone, o Senhor me acolherá."
+    </p>
+    <p class="versiculo-ref">Salmo 27:10</p>
+
+    <h2>Você não precisa que sua mãe mude para se libertar.</h2>
+    <p class="texto">
+      Precisa mudar a relação que você tem com a imagem dela dentro de você.
+      É isso que esse workshop faz.
+      Mulher de Deus, quando você estiver pronta, a porta está aberta.
+    </p>
+
+    <div class="btn-wrap">
+      <a href="#" class="btn-primary">QUERO ME LIBERTAR — R$47</a>
+      <p class="preco">Acesso vitalício · Acesso imediato após a compra</p>
+      <a href="https://wa.me/5511949760542" class="btn-whatsapp" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Tem dúvidas? Fala comigo no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Karla Vieira · Todos os direitos reservados</p>
+</footer>
+
+</body>
+</html>
